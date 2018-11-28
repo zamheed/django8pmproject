@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
     {% load staticfiles %}
+     <script src="{% static '/js/validations.js' %}" type="text/javascript"></script>
     <meta charset="UTF-8">
     <title>Title</title>
+
+
+
 </head>
 <body>
+
         <table align="center">
             <tr>
                 <td>
@@ -29,13 +34,31 @@
 
         <table align="center" border="2">
             <tr>
-                <th width="120"> Home </th>
-                <th width="120"> Donor </th>
-                <th width="120"> Organization </th>
+                <th width="120">
+                    <a href="/openHomePage/?type=home">
+                        Home
+                    </a>
+                </th>
+                <th width="120">
+                    <a href="/openDonorLogin/?type=h_donor">
+                        Donor
+                    </a>
+                </th>
+                <th width="120">
+                    <a href="/openOrganizationLogin/?type=h_organization">
+                        Organization
+                    </a>
+                </th>
                 <th width="120"> About Us </th>
-                <th width="120"> Admin </th>
+                <th width="120">
+                    <a href="/admin/">
+                        Admin
+                    </a>
+                </th>
             </tr>
         </table>
+
+        {% if type == "home" %}
         <table align="center">
             <tr></tr>
             <tr></tr>
@@ -51,5 +74,73 @@
                 </td>
             </tr>
         </table>
+        {% endif %}
+
+        {% if type == "h_donor" %}
+        <form action="//" method="post">
+            {% csrf_token %}
+        <table align="center" border="0">
+            <tr><th height="50" width="200"> Donor Login Page </th></tr>
+            <tr><th height="50" width="200"> <input type="text" placeholder="Username" required name="d_uname"> </th></tr>
+            <tr><th height="50" width="200"> <input type="password" placeholder="Password" required name="d_pass"> </th></tr>
+            <tr><th height="50" width="200"> <input type="submit" value="Login"> </th></tr>
+            <tr><th>
+                <a href="/openDonorRegister/?type=h_donor_register">
+                    New Donor Register
+                </a>
+            </th>
+            </tr>
+        </table>
+        </form>
+        {% endif %}
+
+        {% if type == "h_organization" %}
+        <form action="//" method="post">
+            {% csrf_token %}
+        <table align="center" border="0">
+            <tr><th height="50" width="200"> Organization Login Page </th></tr>
+            <tr><th height="50" width="200"> <input type="text" placeholder="Username" required name="o_uname"> </th></tr>
+            <tr><th height="50" width="200"> <input type="password" placeholder="Password" required name="o_pass"> </th></tr>
+            <tr><th height="50" width="200"> <input type="submit" value="Login"> </th></tr>
+        </table>
+        </form>
+        {% endif %}
+
+        {% if type == "h_donor_register" %}
+            <form action="//"   method="post">
+                {% csrf_token %}
+            <table align="center" border="0">
+                <tr>
+                    <th width="250" >
+                        <h3>Donor Registration</h3>
+                    </th>
+                </tr>
+                <tr><th width="250" ><input type="text" placeholder="Name" required name="d_name"></th></tr>
+
+                <tr><th width="250" ><input type="number" placeholder="Contact No" required name="d_cno"></th> </tr>
+
+                <tr>
+                    <th width="250" >
+                        <form action="//">
+                        {% csrf_token %}
+                        <select name="d_state"  onchange="check()" id="one" >
+                            {% for x in states %}
+                                <option>{{ x }}</option>
+                            {% endfor %}
+                        </select>
+                        </form>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th width="250" >
+                        <select name="d_city">
+
+                        </select>
+                    </th>
+                </tr>
+            </table>
+            </form>
+        {% endif %}
 </body>
 </html>

@@ -17,11 +17,20 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
+from bd import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
 
-    path('', TemplateView.as_view(template_name="index.html")),
+    path('',views.openHomePage ),
+    path('openHomePage/',views.openHomePage ),
+
+    path('openDonorLogin/',views.openDonorLogin),
+    path('openDonorRegister/',views.openDonorRegister),
+    path('getCityFromState/',views.getCityFromState),
+
+    path('openOrganizationLogin/',views.openOrganizationLogin),
 
 
 ]
