@@ -29,6 +29,7 @@ urlpatterns = [
     path('openDonorLogin/',views.openDonorLogin),
     path('openDonorRegister/',views.openDonorRegister),
     path('getCityFromState/',views.getCityFromState),
+    path('registerDonor/',views.registerDonor),
 
     path('openOrganizationLogin/',views.openOrganizationLogin),
 

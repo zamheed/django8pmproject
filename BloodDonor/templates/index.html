@@ -51,7 +51,7 @@
                 </th>
                 <th width="120"> About Us </th>
                 <th width="120">
-                    <a href="/admin/">
+                    <a href="/admin/" target="_blank">
                         Admin
                     </a>
                 </th>
@@ -80,6 +80,7 @@
         <form action="//" method="post">
             {% csrf_token %}
         <table align="center" border="0">
+            <tr><th><h2><font color="blue">{{ message }}</font></h2></th></tr>
             <tr><th height="50" width="200"> Donor Login Page </th></tr>
             <tr><th height="50" width="200"> <input type="text" placeholder="Username" required name="d_uname"> </th></tr>
             <tr><th height="50" width="200"> <input type="password" placeholder="Password" required name="d_pass"> </th></tr>
@@ -107,7 +108,7 @@
         {% endif %}
 
         {% if type == "h_donor_register" %}
-            <form action="//"   method="post">
+            <form action="/registerDonor/"   method="post">
                 {% csrf_token %}
             <table align="center" border="0">
                 <tr>
@@ -115,30 +116,41 @@
                         <h3>Donor Registration</h3>
                     </th>
                 </tr>
+            <tr>
+                    <th width="250" >
+                        {% csrf_token %}
+                        <select
+                                onselect="true"
+                                name="d_state"
+                                onchange="check()"
+                                id="one">
+                        {% if key == "one" %}
+                            <option>{{ states }}</option>
+                         {% else %}
+                            {% for x in states %}
+                                <option>{{ x }}</option>
+                            {% endfor %}
+                          {% endif %}
+                        </select>
+                    </th>
+                </tr>
+
+            <tr>
+                    <th width="250" >
+                        <select name="d_city">
+                            {% for x in city_names %}
+                                <option>{{ x }}</option>
+                            {% endfor %}
+                        </select>
+                    </th>
+                </tr>
                 <tr><th width="250" ><input type="text" placeholder="Name" required name="d_name"></th></tr>
 
                 <tr><th width="250" ><input type="number" placeholder="Contact No" required name="d_cno"></th> </tr>
 
-                <tr>
-                    <th width="250" >
-                        <form action="//">
-                        {% csrf_token %}
-                        <select name="d_state"  onchange="check()" id="one" >
-                            {% for x in states %}
-                                <option>{{ x }}</option>
-                            {% endfor %}
-                        </select>
-                        </form>
-                    </th>
-                </tr>
-
-                <tr>
-                    <th width="250" >
-                        <select name="d_city">
-
-                        </select>
-                    </th>
-                </tr>
+                <tr><th width="250" ><input type="email" placeholder="Email-Id" required name="d_email"></th> </tr>
+                <tr><th width="250" ><input type="password" placeholder="Password" required name="d_pass"></th> </tr>
+                <tr><th width="250" ><input type="Submit" value="Register"></th> </tr>
             </table>
             </form>
         {% endif %}

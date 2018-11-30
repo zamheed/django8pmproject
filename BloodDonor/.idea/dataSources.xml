@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="blooddonor" uuid="90a2c200-abf8-4a39-923b-0aab948d18b5">
+    <data-source source="LOCAL" name="blooddonor [2]" uuid="56a73865-2910-46ca-97ff-3ec8076c8e8b">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:F:\Naveen Class Room\BloodDonor\blooddonor.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:F:\BloodDonor\blooddonor.sqlite3</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>
